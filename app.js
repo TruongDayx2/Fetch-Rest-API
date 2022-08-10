@@ -24,6 +24,7 @@ function getCourses(callback){
         .then(callback);
 }
 
+
 function renderCourses(courses){
     var listCourses = document.querySelector('#list-course');
     var htmls = courses.map(function(course){
@@ -32,11 +33,60 @@ function renderCourses(courses){
                 <h4>${course.name}</h4>
                 <p>${course.description}</p>
                 <button onclick="handleDeleteCourse(${course.id})">Xoá</button>
+                <button onclick="openUpdateForm(${course.id})">Sửa</button>
             </li>
         `
     })
     listCourses.innerHTML = htmls.join('');
 }
+
+// Update 
+function openUpdateForm(id){
+    console.log(id);
+    //solution:
+        //- Tạo button và ẩn các button không cần thiết
+        //- Thêm class vào các thẻ h4 và p để sửa lí hiện thông tin cần sửa lên ô input 
+
+
+    // var nameInput = item.name;
+
+    // var name = document.querySelector('input[name="name"]');
+
+    // name.textContent(nameInput);
+    
+}
+
+// function updateCourse(data,id){
+//     var option = {
+//         method:'PUT',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(data)
+//     }
+
+//     fetch(linkCourse + '/' + id ,option)
+//         .then(function(response){
+//             response.json();
+//         })
+//         .then(function(){
+//             getCourses(renderCourses);
+//         });
+// }
+
+// function handleUpdateForm(id){
+//     var createBtn = document.querySelector('#create');
+
+//     createBtn.onclick = function(){
+//         var name = document.querySelector('input[name="name"]').value;
+//         var description = document.querySelector('input[name="description"]').value;
+//         var dataForm = {
+//             name : name,
+//             description : description
+//         }
+//         updateCourse(dataForm,id);
+//     }
+// }
 
 // Create API
 function createCourse(data){
